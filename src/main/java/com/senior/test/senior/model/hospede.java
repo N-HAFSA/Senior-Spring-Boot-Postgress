@@ -1,9 +1,12 @@
 package com.senior.test.senior.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class hospede {
@@ -14,7 +17,10 @@ public class hospede {
     private String nome;
     private String documento;
     private String telefone;
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "hospede")
+    private CheckIn checkin;
 
+    public hospede(){}
     public hospede(String nome, String documento, String telefone) {
         this.nome = nome;
         this.documento = documento;
@@ -51,6 +57,19 @@ public class hospede {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "hospede [documento=" + documento + ", id=" + id + ", nome=" + nome + ", telefone=" + telefone + "]";
+    }
+
+    public CheckIn getCheckin() {
+        return checkin;
+    }
+
+    public void setCheckin(CheckIn checkin) {
+        this.checkin = checkin;
     }
 
     

@@ -1,6 +1,8 @@
 package com.senior.test.senior;
 
+import com.senior.test.senior.model.CheckIn;
 import com.senior.test.senior.model.hospede;
+import com.senior.test.senior.repository.CheckInRepository;
 import com.senior.test.senior.repository.hospedeRepository;
 
 import org.slf4j.Logger;
@@ -20,6 +22,8 @@ public class Runner  implements CommandLineRunner  {
     @Autowired
     private hospedeRepository hospedeRepository;
 
+    @Autowired
+    private CheckInRepository checkinRepository;
     
     @Transactional
     public void run(String... args) throws Exception {
@@ -34,5 +38,8 @@ public class Runner  implements CommandLineRunner  {
 
         var u3 = new hospede("John Doe", "29802080928", "08/03/2020");
         hospedeRepository.save(u3);
+
+        var c1 = new CheckIn("","",false,u1);
+        checkinRepository.save(c1);
     }
 }

@@ -2,8 +2,8 @@ package com.senior.test.senior.controller;
 
 import java.util.List;
 
-import com.senior.test.senior.model.hospede;
-import com.senior.test.senior.service.hospedeService;
+import com.senior.test.senior.model.CheckIn;
+import com.senior.test.senior.service.CheckInService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,31 +12,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/api")
-public class hospedeController{
+public class CheckInController {
+    
+    @Autowired
+    private CheckInService checkinService;
 
+    @GetMapping("/checkin")
+    public List<CheckIn> allUsers() {
 
-	@Autowired
-    private hospedeService hospedeService;
-
-    @GetMapping("/hospedes")
-    public List<hospede> allUsers() {
-
-        return hospedeService.findAll();
+        return checkinService.findAll();
     }
 
-    @GetMapping("/hospedes/count")
+    @GetMapping("/checkin/count")
     public Long count() {
 
-        return hospedeService.count();
+        return checkinService.count();
     }
 
-    @DeleteMapping("/hospedes/{id}")
+    @DeleteMapping("/checkin/{id}")
     public void delete(@PathVariable String id) {
 
-        Long hospedeId = Long.parseLong(id);
-        hospedeService.deleteById(hospedeId);
+        Long checkinId = Long.parseLong(id);
+        checkinService.deleteById(checkinId);
     }
 }
