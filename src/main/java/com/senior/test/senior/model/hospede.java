@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class hospede {
 
@@ -17,7 +19,8 @@ public class hospede {
     private String nome;
     private String documento;
     private String telefone;
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "hospede")
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "hospede")
     private CheckIn checkin;
 
     public hospede(){}

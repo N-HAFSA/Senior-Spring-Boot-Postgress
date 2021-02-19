@@ -33,4 +33,17 @@ public class CheckInService {
 
         checkinRepository.deleteById(checkinId);
     }
+
+    public boolean saveCheckIn(CheckIn checkin){
+        boolean status=false;
+		try {
+			checkinRepository.save(checkin);
+			status=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+        
+    }
+	
 }

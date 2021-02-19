@@ -30,7 +30,7 @@ public class Runner  implements CommandLineRunner  {
 
         logger.info("initializing users");
 
-        var u1 = new hospede("Paul", "45678409033", "23/09/2020");
+        /*var u1 = new hospede("Paul", "45678409033", "23/09/2020");
         hospedeRepository.save(u1);
 
         var u2 = new hospede("Robert Black", "93897379238", "17/093/2020");
@@ -40,6 +40,6 @@ public class Runner  implements CommandLineRunner  {
         hospedeRepository.save(u3);
 
         var c1 = new CheckIn("","",false,u1);
-        checkinRepository.save(c1);
+        checkinRepository.save(c1);*/
     }
 }

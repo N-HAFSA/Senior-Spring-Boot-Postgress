@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class CheckIn {
     
@@ -17,7 +19,9 @@ public class CheckIn {
     private String dataEntrada;
     private String dataSaida;
     private boolean adicionalVeiculo;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    
+    @JsonManagedReference
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private hospede hospede;
 
     public String getDataEntrada() {

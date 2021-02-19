@@ -34,4 +34,16 @@ public class hospedeService {
 
         hospedeRepository.deleteById(hospedeId);
     }
+
+    public boolean saveHospede(hospede hospede){
+        boolean status=false;
+		try {
+			hospedeRepository.save(hospede);
+			status=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+        
+    }
 }
